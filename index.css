@@ -1,0 +1,156 @@
+body {
+   width: 100%;
+   height: 100%;
+   padding: 0;
+   margin: 0;
+   background-color: #111519;
+   -webkit-tap-highlight-color: transparent;
+   transition: all .5s;
+}
+
+::selection {
+   background-color: #fd5;
+   color: #000;
+}
+
+::-webkit-scrollbar {
+   width: 5px;
+   height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+   background-color: #eee;
+   border-radius: 150px;
+}
+
+#bodyBox {
+   width: 100%;
+   height: 100%;
+   color: #eee;
+   display: flex;
+   flex-direction: column;
+   position: fixed;
+   font-family: "M PLUS 1p";
+   font-weight: 500;
+   overflow: auto;
+}
+
+#Container {
+   position: relative;
+   left: 50%;
+   transform: translateX(-50%);
+   padding: 0 20px;
+   max-width: 690px;
+   flex: 1;
+}
+
+#pipactive {
+   width: 100%;
+   height: 462px;
+   border: solid 2px #ddd;
+   border-radius: 15px;
+   display: none;
+   cursor: crosshair;
+}
+
+#pipactive span {
+   font-size: 20px;
+   display: inline-block;
+   position: relative;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+
+#pipBox {
+   margin-bottom: 50px;
+}
+
+#textareaBox {
+   display: flex;
+   justify-content: center;
+}
+
+#textInput {
+   width: calc(100% - 6px);
+   height: 280px;
+   background-color: #333533;
+   color: #eee;
+}
+
+#savedTimeBox {
+   font-size: 12px;
+   color: #bbb;
+   text-align: center;
+}
+
+#stats {
+   margin: 20px 0;
+   line-height: 1.5;
+}
+
+button,
+#upload::file-selector-button {
+   font-size: 14px;
+   margin: 7px 13px 0 0;
+   width: 110px;
+   height: 30px;
+   background-color: #eee;
+   border: solid 1px #eee;
+   border-radius: 7px;
+   outline: none;
+   box-shadow: none;
+   cursor: pointer;
+}
+
+label {
+   cursor: pointer;
+   width: fit-content;
+   display: flex;
+   align-items: center;
+}
+
+#howto {
+   margin-top: 50px;
+}
+
+ul,
+li {
+   font-size: 15px;
+   padding-bottom: 8px;
+   margin-left: -8px;
+}
+
+#contact {
+   font-size: 13.5px;
+   color: #eee;
+   text-align: center;
+   margin: auto;
+   padding: 60px 0 25px 0;
+   line-height: 1.8;
+}
+
+.contact::before {
+   content: "";
+   background-image: url(https://jimajimax.github.io/text-counter/img/x-white.svg);
+   display: inline-flex;
+   width: 8.5px;
+   height: 8.5px;
+   background-size: contain;
+   background-repeat: no-repeat;
+   margin-left: 5px;
+}
+
+.contact {
+   color: #7df;
+   margin-right: 5px;
+}
+
+.contact:hover,
+.contact:visited:hover {
+   color: #f66;
+}
+
+.contact:visited {
+   color: #fd5;
+}
