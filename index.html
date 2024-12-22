@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="https://jimajimax.github.io/text-counter/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="文字数カウントツール">
+  <meta name="twitter:description" content="文字数をカウントします">
+  <meta name="twitter:image" content="https://jimajimax.github.io/text-counter/img/summary_card.png">
+  <meta name="theme-color" content="#111519">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&display=swap" rel="stylesheet">
+  <title>文字数カウントツール</title>
+  <link rel="styleSheet" type="text/css" href="./index.css">
+</head>
+<body>
+  <div id="bodyBox">
+    <div id="Container">
+      <h1 style="text-align: center; font-size: 29px;">文字数カウントツール</h1>
+
+      <div id="pipactive" title="クリックでPiPを閉じる"><span>Picture in Picture Mode Is Active Now</span></div>
+      <div id="pipBox">
+        <div id="textContainer">
+          <div id="textareaBox">
+            <textarea id="textInput" placeholder="ここにテキストを入力..."></textarea>
+          </div>
+          <div id="savedTimeBox"></div>
+          <div id="stats">
+            <table style="width: 65%; min-width: 210px; color: #eee; position: relative; left: 50%; transform: translateX(-50%);">
+              <tr>
+                <td style="width: 80%;">文字数 (スペース含):</td>
+                <td style="width: 20%; text-align: right; text-decoration: underline;"><span id="charWithSpaces">0</span></td>
+              </tr>
+              <tr>
+                <td style="width: 80%;">文字数 (スペース除):</td>
+                <td style="width: 20%; text-align: right; text-decoration: underline;"><span id="charWithoutSpaces">0</span></td>
+              </tr>
+              <tr>
+                <td style="width: 80%;">行数:</td>
+                <td style="width: 20%; text-align: right; text-decoration: underline;"><span id="lineCount">0</span></td>
+              </tr>
+              <tr>
+                <td style="width: 80%;">段落数:</td>
+                <td style="width: 20%; text-align: right; text-decoration: underline;"><span id="paragraphCount">0</span></td>
+              </tr>
+              <tr>
+                <td style="width: 80%;">原稿用紙 (400字詰):</td>
+                <td style="width: 20%; text-align: right; text-decoration: underline;"><span id="pageCount">0</span>枚</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <label><button id="pipBtn">PiP</button><span id="pipState">Picture-in-Pictureで表示</span></label>
+      <label><button id="clear">クリア</button><span id="clearState">クリアする</span></label>
+      <label><button id="copy">コピー</button><span id="copyState">クリップボードにコピー</span></label>
+      <label><button id="download">保存</button><span id="downloadState">入力内容をデバイスに保存</span></label>
+      <input id="upload" type="file" accept=".txt, .html, .css, .js, .json, .md, .xml, .csv" style="cursor: pointer;">
+      <div id="howto">
+        <span style="font-size: 22px;font-weight: 800;">使い方:</span>
+        <ul>
+          <li>カウントしたい内容を入力するだけです
+          <li>枠の右下をドラッグすると大きさを変更できます<br>(スマホの場合判定がシビア)
+          <li>PiPは常に最前面で表示できます
+          <li>デバイスにファイルを保存できます
+          <li>デバイスのファイルを選択できます
+          <li><strong>入力内容は一切外部送信しません</strong>がブラウザに保存するため機密情報などはお気をつけ下さい
+          <li>520万文字目安で保存が機能しなくなる場合があります
+          <li>原稿用紙は行末の 」 、 。 は考慮していません
+          <li>自動保存されるのでToDoリスト、メモ機能にもなります
+      </ul>
+      </div>
+    </div>
+    <div id="contact">
+      バク、不具合、要望などは<a class="contact" href="https://x.com/messages/compose?recipient_id=1817905403663171584" target="_blank" title="X | Twitter">こちら</a>までお願いします
+      <br>Copyright © 2024 jimajimax All Rights Reserved.
+    </div>
+  </div>
+  <script type="text/javascript" src="./index.js"></script>
+</body>
+</html>
