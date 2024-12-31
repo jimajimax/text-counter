@@ -186,7 +186,7 @@
 // #endregion
 // #region clear
     clear.addEventListener("click", () => {
-      const clearCheck = confirm("クリアしますか？\n一時保存も全て削除されます");
+      const clearCheck = confirm("クリアしますか？\n保存も全て削除されます");
       if (clearCheck) {
         textarea.value = "";
         updateStats()
