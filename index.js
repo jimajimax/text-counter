@@ -13,7 +13,6 @@
     const clear = document.getElementById("clear");
     const clearState = document.getElementById("clearState");
     const share = document.getElementById("share");
-    const shareState = document.getElementById("shareState");
     const copy = document.getElementById("copy");
     const copyState = document.getElementById("copyState");
     const paste = document.getElementById("paste");
@@ -213,25 +212,15 @@
 // #region share
     share.addEventListener("click", async () => {
       if (navigator.share) {
-          if (!textarea.value.trim()) {
-            alert("共有する内容を入力してください");
-            return;
-          }
+        if (!textarea.value.trim()) {
+          alert("共有する内容を入力してください");
+          return;
+        }
 
-          navigator.share({
-            title: "入力内容を共有",
-            text: textarea.value,
-          })
-          .then(() => {
-          })
-          .catch(() => {
-            shareState.textContent = "共有できませんでした...";
-            shareState.style.color = "#f66";
-            setTimeout(() => {
-              shareState.style.color = "#eee";
-              shareState.textContent = "入力内容を共有する";
-            }, 1500);
-          });
+        navigator.share({
+          title: "入力内容を共有",
+          text: textarea.value,
+        })
       } else {
         alert("サポートされていないブラウザのようです");
       }
@@ -262,29 +251,39 @@
 // #endregion
 // #region paste
     paste.addEventListener("click", () => {
-      navigator.clipboard.readText()
-        .then((text) => {
-          // クリップボードから読み取ったテキストをtextareaに貼り付け
-          textarea.value = text;
-          updateStats();
-          timestamp();
-          pasteState.textContent = "ペーストしました";
-          pasteState.style.color = "#f66";
+      const pasteCheck = confirm("ペーストしますか？\n入力内容が上書きされます");
+      if (pasteCheck) {
+        navigator.clipboard.readText()
+          .then((text) => {
+            // クリップボードから読み取ったテキストをtextareaに貼り付け
+            textarea.value = text;
+            updateStats();
+            timestamp();
+            pasteState.textContent = "ペーストしました";
+            pasteState.style.color = "#f66";
 
-          setTimeout(() => {
-            pasteState.style.color = "#eee";
-            pasteState.textContent = "クリップボードからペースト";
-          }, 1500);
-        })
-        .catch(() => {
-          pasteState.textContent = "ペーストできませんでした...";
-          pasteState.style.color = "#f66";
+            setTimeout(() => {
+              pasteState.style.color = "#eee";
+              pasteState.textContent = "クリップボードからペースト";
+            }, 1500);
+          })
+          .catch(() => {
+            pasteState.textContent = "ペーストできませんでした...";
+            pasteState.style.color = "#f66";
 
-          setTimeout(() => {
-            pasteState.style.color = "#eee";
-            pasteState.textContent = "クリップボードからペースト";
-          }, 1500);
-        });
+            setTimeout(() => {
+              pasteState.style.color = "#eee";
+              pasteState.textContent = "クリップボードからペースト";
+            }, 1500);
+          });
+      } else {
+        pasteState.style.color = "#f66";
+        pasteState.textContent = "キャンセルしました";
+        setTimeout(() => {
+          pasteState.style.color = "#eee";
+          pasteState.textContent = "クリップボードからペースト";
+        }, 1500);
+      }
     });
 // #endregion
 // #region download
