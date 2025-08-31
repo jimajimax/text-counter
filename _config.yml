@@ -4,5 +4,5 @@ plugins:
 
 title: 文字数カウントツール
 description: 文字数をカウントするツールです。Picture-in-Pictureで常に最前面で表示できます。ToDoリスト、メモ機能にもなります。
-url: "https://jimajimax.github.io/text-counter/"
-baseurl: "/text-counter/"
+url: "https://jimajimax.github.io"
+baseurl: "/text-counter"
