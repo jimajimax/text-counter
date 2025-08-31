@@ -1,11 +1,20 @@
-body {
+html, body {
    width: 100%;
    height: 100%;
    padding: 0;
    margin: 0;
-   background-color: #111519;
+   background-color: #151617;
    -webkit-tap-highlight-color: transparent;
-   transition: all .5s;
+   animation: access .4s ease-out;
+}
+
+@keyframes access {
+   from {
+      transform: translate(-25vmax, 15vmax) scale(.5);
+   }
+   to {
+      transform: translate(0, 0) scale(1);
+   }
 }
 
 ::selection {
@@ -21,6 +30,33 @@ body {
 ::-webkit-scrollbar-thumb {
    background-color: #eee;
    border-radius: 150px;
+}
+
+h1:hover,
+#savedTimeBox:hover,
+tr:hover .td,
+label:hover,
+#upload:hover,
+#contact:hover {
+   color: #fd5;
+   text-shadow: 0 0 10px #ffdd55ff;
+}
+
+#textInput:focus,
+#textInput:hover,
+#howto:hover {
+  outline: none;
+  border-color: #fd5;
+  box-shadow: 0 0 30px 2px #ffdd5555;
+}
+
+h1 {
+   position: relative;
+   left: 50%;
+   transform: translateX(-52%);
+   width: fit-content;
+   font-size: 23px;
+   transition: color 1s ease, text-shadow 1s ease;
 }
 
 #bodyBox {
@@ -39,18 +75,24 @@ body {
    position: relative;
    left: 50%;
    transform: translateX(-50%);
-   padding: 0 20px;
-   max-width: 690px;
+   padding: 0 25px;
+   max-width: 760px;
    flex: 1;
 }
 
 #pipactive {
    width: 100%;
-   height: 462px;
+   height: calc(max(calc(100vh / 2), 280px) + 229px);
    border: solid 2px #ddd;
-   border-radius: 15px;
+   border-radius: 50px;
    display: none;
    cursor: crosshair;
+   transition: border-color 1s ease, box-shadow 1s ease;
+}
+
+#pipactive:hover {
+  border-color: #fd5;
+  box-shadow: 0 0 30px 2px #ffdd5555;
 }
 
 #pipactive span {
@@ -63,7 +105,7 @@ body {
 }
 
 #pipBox {
-   margin-bottom: 50px;
+   margin-bottom: 30px;
 }
 
 #textareaBox {
@@ -72,16 +114,88 @@ body {
 }
 
 #textInput {
-   width: calc(100% - 6px);
-   height: 280px;
-   background-color: #333533;
+   width: calc(100% - 7.5px);
+   height: max(calc(100vh / 2), 280px);
+   background-color: #303230;
    color: #eee;
+   border-radius: 35px;
+   border: solid 1.5px #eee;
+   padding: 13px;
+   transition: border-color 1s ease, box-shadow 1s ease;
+}
+
+#group {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-top: 8px;
+}
+
+.undoredo {
+   width: calc(100% / 5);
+   min-width: 50px;
+   margin: 0 0 0 0;
+   font-size: 14px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   color: #777;
+   border-color: #777;
+   cursor: not-allowed;
+}
+
+.undoredo:hover {
+   box-shadow: none;
+   color: #777;
+   border-color: #777;
+   cursor: not-allowed;
+   border-radius: 20px;
+}
+
+.redoundoCheck {
+   color: #eee;
+   border-color: #eee;
+   cursor: pointer;
+}
+
+.redoundoCheck:hover {
+   color: #eee;
+   border-color: #eee;
+   cursor: pointer;
+   box-shadow: 0 0 6px 2px #ffdd5599;
+   border-color: #fd5;
+   border-radius: 9px;
+}
+
+#undoIcon,
+#redoIcon {
+   width: 20px;
+   height: 20px;
+   margin-top: -3px;
+}
+
+#undoIcon {
+   margin-right: 4px;
+}
+
+#redoIcon {
+   margin-left: 4px;
 }
 
 #savedTimeBox {
-   font-size: 12px;
-   color: #bbb;
-   text-align: center;
+   width: fit-content;
+   font-size: 13px;
+   color: #ccc;
+   transition: color 1s ease, text-shadow 1s ease;
+}
+
+#table {
+   position: relative;
+   left: 50%;
+   transform: translateX(-52%);
+   width: 60%;
+   min-width: 210px;
+   color: #eee;
 }
 
 #stats {
@@ -89,18 +203,48 @@ body {
    line-height: 1.5;
 }
 
-button,
-#upload::file-selector-button {
+.td1 {
+   width: 80%;
+   transition: color 1s ease, text-shadow 1s ease;
+}
+
+.td2 {
+   width: 20%;
+   text-align: right;
+   text-decoration: underline;
+   transition: color 1s ease, text-shadow 1s ease;
+}
+
+.fade-right {
+   opacity: 0.2;
+   transform: translateX(50vw) scale(0.1);
+}
+
+.fade-left {
+   transition: opacity .5s ease-in, transform .4s ease-in;
+   opacity: 1;
+   transform: translateX(0) scale(1);
+}
+
+button {
    font-size: 14px;
-   margin: 7px 13px 0 0;
+   margin: 5px 12px 5px 0;
    width: 110px;
    height: 30px;
-   background-color: #eee;
+   background-color: transparent;
+   color: #eee;
    border: solid 1px #eee;
-   border-radius: 7px;
+   border-radius: 20px;
    outline: none;
    box-shadow: none;
    cursor: pointer;
+   transition: box-shadow .3s ease, border-radius .3s ease;
+}
+
+button:hover {
+   box-shadow: 0 0 6px 2px #ffdd5599;
+   border-color: #fd5;
+   border-radius: 9px;
 }
 
 label {
@@ -108,34 +252,56 @@ label {
    width: fit-content;
    display: flex;
    align-items: center;
+   transition: color .3s ease, text-shadow .3s ease;
 }
 
 #howto {
    margin-top: 50px;
+   padding: 20px;
+   border: solid 1.5px #eee;
+   border-radius: 35px;
+   transition: border-color 1s ease, box-shadow 1s ease;
+}
+
+#howtoTitle {
+   font-size: 23px;
+   font-weight: 900;
+}
+
+#kome {
+   text-indent: -7px;
+}
+
+#kome::before{
+   content: "※";
+   font-size: 10px;
+   margin-left: -1px;
+   margin-right: 6px;
 }
 
 ul,
-li {
+li,
+#kome {
    font-size: 15px;
-   padding-bottom: 8px;
-   margin-left: -8px;
+   margin: 10px 0 0 -8px;
 }
 
 #contact {
+   width: fit-content;
    font-size: 13.5px;
    color: #eee;
    text-align: center;
-   margin: auto;
-   padding: 60px 0 25px 0;
+   margin: 60px auto 25px auto;
    line-height: 1.8;
+   transition: color 1s ease, text-shadow 1s ease;
 }
 
 .contact::before {
    content: "";
    background-image: url(https://jimajimax.github.io/text-counter/img/x-white.svg);
    display: inline-flex;
-   width: 8.5px;
-   height: 8.5px;
+   width: 9px;
+   height: 9px;
    background-size: contain;
    background-repeat: no-repeat;
    margin-left: 5px;
@@ -148,9 +314,9 @@ li {
 
 .contact:hover,
 .contact:visited:hover {
-   color: #f66;
+   color: #fd5;
 }
 
 .contact:visited {
-   color: #fd5;
+   color: #e6f;
 }
