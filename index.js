@@ -287,7 +287,7 @@
 // #endregion
 // #region clear
     clear.addEventListener("click", () => {
-      if (!textarea.value.trim()) {
+      if (!textarea.value) {
         clearState.classList.remove("fade-left");
         clearState.classList.add("fade-right");
         setTimeout(() => {
