@@ -103,15 +103,13 @@
       const savedText = localStorage.getItem("text-counter_text");
       if (savedText) {
         textarea.value = savedText;
-        history.push(textarea.value);
         updateStats();
       }
+      history.push(textarea.value);
     });
 // #endregion
 // #region history
     let historyIndex;
-    setTimeout(() => {
-    }, 500);
     historyIndex = 0; // 配列の何個目の要素を表示しているか (初期値0)
 
     function undoredo() {
@@ -345,7 +343,7 @@
 // #region share
     share.addEventListener("click", async () => {
       if (navigator.share) {
-        if (!textarea) {
+        if (!textarea.value) {
           alert("共有する内容を入力してください");
           return;
         }
@@ -446,7 +444,7 @@
     paste.addEventListener("click", () => {
       navigator.clipboard.readText()
         .then((text) => {
-          if (text == "") {
+          if (text === "") {
             alert("ペーストする内容がありません");
             return;
           }
@@ -525,7 +523,7 @@
         }, 2500);
         return;
       }
-      const to = prompt("置換後の新しい文字列を入力してください\n置換する文字列: " + from);
+      const to = prompt("置換後の新しい文字列を入力してください\n\n置換する文字列: " + from);
       if (to === null) {
         replaceState.classList.remove("fade-left");
         replaceState.classList.add("fade-right");
