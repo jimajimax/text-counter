@@ -345,7 +345,7 @@
 // #region share
     share.addEventListener("click", async () => {
       if (navigator.share) {
-        if (!textarea.value.trim()) {
+        if (!textarea) {
           alert("共有する内容を入力してください");
           return;
         }
@@ -394,7 +394,7 @@
 // #region copy
     copy.addEventListener("click", () => {
       const textToCopy = textarea.value;
-      if (!textarea.value.trim()) {
+      if (!textarea.value) {
         alert("コピーする内容を入力してください");
         return;
       }
@@ -446,7 +446,7 @@
     paste.addEventListener("click", () => {
       navigator.clipboard.readText()
         .then((text) => {
-          if (text.trim() == "") {
+          if (text == "") {
             alert("ペーストする内容がありません");
             return;
           }
